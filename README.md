@@ -1,0 +1,6 @@
+NOMBRE: Ramirez Chavez Said Alejandro
+GRADO Y GRUPO: 4-D
+NUMEOR DE CONTROL: 24308060610069
+
+
+
