@@ -11,7 +11,7 @@ def index():
 def Tareas():
     return render_template("GestordeTareas.html")
 
-@app.route("/secion")
+@app.route("/sesion")
 def secion():
     return render_template("inicio_secion.html")
 
