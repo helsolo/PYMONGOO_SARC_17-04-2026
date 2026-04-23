@@ -28,12 +28,14 @@ class GestorTareas:
         self.tareas.create_index([("usuario_id", 1), ("fecha_creacion", -1)])
         self.tareas.create_index("estado")
     
-    def crear_usuario(self, nombre: str, email: str) -> Optional[str]:
+    def crear_usuario(self, nombre: str, apellido: str, email: str, contrasena: str) -> Optional[str]:
         """Crear un nuevo usuario"""
         try:
             resultado = self.usuarios.insert_one({
                 "nombre": nombre,
+                "apellido": apellido,
                 "email": email,
+                "contrasena": contrasena,
                 "fecha_registro": datetime.now(),
                 "activo": True
             })
@@ -52,6 +54,20 @@ class GestorTareas:
         except Exception as e:
             print(f"Error al obtener usuario: {e}")
             return None
+    
+    def obtener_usuario_por_email(self, email: str) -> Optional[Dict]:
+        """Buscar usuario por email"""
+        usuario = self.usuarios.find_one({"email": email})
+        if usuario:
+            usuario['_id'] = str(usuario['_id'])
+        return usuario
+    
+    def autenticar_usuario(self, email: str, contrasena: str) -> Optional[Dict]:
+        """Autenticar un usuario por email y contraseña"""
+        usuario = self.obtener_usuario_por_email(email)
+        if usuario and usuario.get('contrasena') == contrasena:
+            return usuario
+        return None
     
     def crear_tarea(self, usuario_id: str, titulo: str, descripcion: str = "", 
                    fecha_limite: Optional[datetime] = None) -> Optional[str]:
@@ -196,7 +212,7 @@ def ejemplo_uso():
     gestor = GestorTareas()
     
     # Crear usuario
-    usuario_id = gestor.crear_usuario("Ana García", "ana@email.com")
+    usuario_id = gestor.crear_usuario("Ana", "García", "ana@email.com", "secret123")
     print(f"Usuario creado con ID: {usuario_id}")
     
     if usuario_id:
