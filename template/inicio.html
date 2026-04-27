@@ -1,53 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <span class="navbar-brand mb-0 h1">Base de datos de usuarios
-            </span>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light" href="/sesion">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light" href="/cuenta">Crear Cuenta</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends "base.html" %}
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow">
-                    <div class="card-body p-5">
+{% block title %}Inicio{% endblock %}
 
-                        <h2 class="text-dark mb-2">Bienvenido</h2>
-
-                        <p class="text-muted mb-4">introduccion a la aplicacion</p>
-
-                        <div class="alert bg-info" role="alert">
-                            <h5 class="alert-heading">tema</h5>
-                            <p class="mb-0">Esta aplicacion es desarollada con la finalidada de enlasar la base de datos de mongo compas con la aplicacion echa con python y flask, usaremos mongodb y html</p>
-                        </div>
-
-                    </div>
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-body p-5">
+                <h2 class="text-dark mb-2">Bienvenido</h2>
+                <p class="text-muted mb-4">introduccion a la aplicacion</p>
+                <div class="alert bg-info" role="alert">
+                    <h5 class="alert-heading">tema</h5>
+                    <p class="mb-0">Esta aplicacion es desarollada con la finalidada de enlasar la base de datos de mongo compas con la aplicacion echa con python y flask, usaremos mongodb y html</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}
